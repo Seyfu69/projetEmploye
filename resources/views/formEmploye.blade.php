@@ -48,17 +48,23 @@
                     <p><input type="checkbox" name="interet" value="achat"/>Achat de mobilier</p>
                 </div>
             </div>
-        <div class="form-group">
-            <div class="col-md-12 col-md-offset-3">
-                <button type="submit" class="btn btn-primary">
-                    Valider
-                </button>
-                <button type="button" class="btn btn-secondary"
-                        onclick="if (confirm('Annuler la saisie ?')) window.location='{{url('/')}}';">
-                    Annuler
-                </button>
+            <div class="form-group">
+                <label class="col-md-3">Message</label>
+                <div class="col-md-6">
+                    <textarea class="col-md-6" name="msg" placeholder="Votre message ici..."></textarea>
+                </div>
             </div>
-        </div>
+            <div class="form-group">
+                <div class="col-md-12 col-md-offset-3">
+                    <button type="submit" class="btn btn-primary">
+                        Valider
+                    </button>
+                    <button type="button" class="btn btn-secondary"
+                            onclick="if (confirm('Annuler la saisie ?')) window.location='{{url('/')}}';">
+                        Annuler
+                    </button>
+                </div>
+            </div>
         </div>
     </form>
 
