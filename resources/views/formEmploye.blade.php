@@ -4,6 +4,8 @@
     <form method="POST" action="{{url('/validerEmploye')}}">
         {{csrf_field()}}
 
+        <input type="hidden" name="id" value="{{ $employe->numEmp }}" readonly>
+
         <h1>@if($employe->numEmp) Fiche @else Ajout @endif d'un employé</h1>
         <div class="col-md-12 card card-body bg-light">
             <div class="form-group">
@@ -17,6 +19,7 @@
                 <label class="col-md-3">Nom : </label>
                 <div class="col-md-6">
                     <input type="text" name="nom" value="{{$employe->nom}}" class="form-control" required>
+
                 </div>
             </div>
             <div class="form-group">
@@ -36,7 +39,7 @@
                 <div class="col-md-6">
                     <select class="form-select" name="profil">
                         <option value="parti" @if($employe->profil == "parti") selected @endif>Un particulier</option>
-                        <option value="profe" selected @if($employe->profil == "profe") selected @endif>Un professionnel</option>
+                        <option value="profe" @if($employe->profil == "profe"  or is_null($employe->profil)) selected @endif>Un professionnel</option>
                         <option value="insti" @if($employe->profil == "insti") selected @endif>Un institutionnel</option>
                     </select>
                 </div>
@@ -44,7 +47,7 @@
             <div class="form-group">
                 <label class="col-md-6">Quel type de présentation recherchez vous?</label>
                 <div class="col-md-6">
-                    <p><input type="checkbox" name="interet" value="localtion" @if($employe->interet == "location") checked @endif/>Location de mobilier</p>
+                    <p><input type="checkbox" name="interet" value="location" @if($employe->interet == "location") checked @endif/>Location de mobilier</p>
                     <p><input type="checkbox" name="interet" value="achat" @if($employe->interet == "achat") checked @endif/>Achat de mobilier</p>
                 </div>
             </div>

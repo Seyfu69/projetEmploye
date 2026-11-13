@@ -14,7 +14,7 @@ class EmployeService
         $employe->save();
     }
 
-    public function getEmployes($id) {
+    public function getEmploye($id) {
         $employe = Employe::query()->find($id);
         return $employe;
 

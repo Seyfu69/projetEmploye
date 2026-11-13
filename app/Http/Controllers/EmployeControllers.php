@@ -20,26 +20,28 @@ class EmployeControllers extends Controller
     public function validEmploye(Request $request)
     {
         $id = $request->input('id');
-        if ($id) {
+        if($id)
+        {
             $service = new EmployeService();
-            $employe = $service->getEmployes($id);
-        } else {
+            $employe = $service->getEmploye($id);
+        }
+        else
+        {
             $employe = new Employe();
         }
 
-        $employe->civilite = $request->input('civi');
+        $employe->civilite = $request->input('civil');
         $employe->prenom = $request->input('prenom');
         $employe->nom = $request->input('nom');
+        $pwd = $request->input('mdp');
+        if(strlen($pwd) > 0)
+        {
+            $employe->pwd = password_hash($request->input('mdp'), PASSWORD_DEFAULT);
+        }
         $employe->profil = $request->input('profil');
         $employe->interet = $request->input('interet');
         $employe->message = $request->input('msg');
-        $pwd = $request->input('mdp');
-        if (strlen($pwd) > 0) {
-            $employe->pwd = password_hash($request->input('mdp'), PASSWORD_DEFAULT);
 
-        }
-
-        $service = new EmployeService();
         $service->saveEmploye($employe);
 
         return view('home');
@@ -47,7 +49,7 @@ class EmployeControllers extends Controller
 
     public function editEmploye($id) {
         $service = new EmployeService();
-        $employe = $service->getEmployes($id);
+        $employe = $service->getEmploye($id);
         return view('formEmploye',compact('employe'));
     }
 
