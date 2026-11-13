@@ -10,3 +10,6 @@ Route::get('/', function () {
 Route::get('/listerEmployes', [ EmployeControllers::class , 'listEmployes']);
 Route::get('/ajouterEmploye', [ EmployeControllers::class , 'addEmploye']);
 Route::post('/validerEmploye', [ EmployeControllers::class , 'validEmploye']);
+
+Route::get('/editerEmploye/{id}', [ EmployeControllers::class , 'editEmploye']);
+

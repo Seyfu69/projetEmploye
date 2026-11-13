@@ -23,6 +23,7 @@
                 <td>{{$emp->interet}}</td>
                 <td>{{$emp->profil}}</td>
                 <td>{{$emp->message}}</td>
+                <td><a href="{{url('/editerEmploye/'.$emp->numEmp)}}">Afficher</a></td>
             </tr>
         @endforeach
     </table>

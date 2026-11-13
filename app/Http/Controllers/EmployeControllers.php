@@ -14,23 +14,41 @@ class EmployeControllers extends Controller
         return view('listEmployes',compact('employes'));
     }
     public function addEmploye() {
-        return view('formEmploye');
+        $employe = new Employe();
+        return view('formEmploye', compact('employe'));
     }
     public function validEmploye(Request $request)
     {
-        $employe = new Employe();
+        $id = $request->input('id');
+        if ($id) {
+            $service = new EmployeService();
+            $employe = $service->getEmployes($id);
+        } else {
+            $employe = new Employe();
+        }
+
         $employe->civilite = $request->input('civi');
         $employe->prenom = $request->input('prenom');
         $employe->nom = $request->input('nom');
-        $employe->pwd = password_hash($request->input('pwd'), PASSWORD_DEFAULT);
         $employe->profil = $request->input('profil');
         $employe->interet = $request->input('interet');
         $employe->message = $request->input('msg');
+        $pwd = $request->input('mdp');
+        if (strlen($pwd) > 0) {
+            $employe->pwd = password_hash($request->input('mdp'), PASSWORD_DEFAULT);
+
+        }
 
         $service = new EmployeService();
         $service->saveEmploye($employe);
 
         return view('home');
+    }
+
+    public function editEmploye($id) {
+        $service = new EmployeService();
+        $employe = $service->getEmployes($id);
+        return view('formEmploye',compact('employe'));
     }
 
 }

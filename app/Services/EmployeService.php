@@ -13,4 +13,10 @@ class EmployeService
     {
         $employe->save();
     }
+
+    public function getEmployes($id) {
+        $employe = Employe::query()->find($id);
+        return $employe;
+
+    }
 }
