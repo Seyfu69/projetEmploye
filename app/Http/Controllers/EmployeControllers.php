@@ -19,10 +19,10 @@ class EmployeControllers extends Controller
     }
     public function validEmploye(Request $request)
     {
+        $service = new EmployeService();
         $id = $request->input('id');
         if($id)
         {
-            $service = new EmployeService();
             $employe = $service->getEmploye($id);
         }
         else

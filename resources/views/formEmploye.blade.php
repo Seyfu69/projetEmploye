@@ -11,8 +11,8 @@
             <div class="form-group">
                 <label class="col-md-3">Civilité</label>
                 <div class="col-md-6">
-                    <p><input type="radio" name="civi" value="Mme" @if($employe->civilite == "Mme") checked @endif>Madame</p>
-                    <p><input type="radio" name="civi" value="M" @if($employe->civilite == "M") checked @endif>Monsieur</p>
+                    <p><input type="radio" name="civil" value="Mme" @if($employe->civilite == "Mme") checked @endif>Madame</p>
+                    <p><input type="radio" name="civil" value="M" @if($employe->civilite == "M") checked @endif>Monsieur</p>
                 </div>
             </div>
             <div class="form-group">
